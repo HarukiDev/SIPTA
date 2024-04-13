@@ -1,6 +1,5 @@
 import { useState } from "react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
-import { Link } from "@inertiajs/react";
 
 export default function Authenticated({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -15,10 +14,10 @@ export default function Authenticated({ auth, header, children }) {
                     <a href={route("dashboard")} className="btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-base-100 text-center">
                         Beranda
                     </a>
-                    <a href="#" className="btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-base-100 text-center">
+                    <a href={route("tugasakhir")} className="btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-base-100 text-center">
                         Tugas Akhir
                     </a>
-                    <a href="#" className="btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-base-100 text-center">
+                    <a href={route("dospem")} className="btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-base-100 text-center">
                         Dosen Pembimbing
                     </a>
                     <a href={route("profile.edit")} className="btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-white text-center">

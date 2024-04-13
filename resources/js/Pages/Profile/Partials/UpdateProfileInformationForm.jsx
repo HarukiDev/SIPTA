@@ -22,15 +22,12 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
     return (
         <section className={className}>
             <header>
-                <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100">Profile Information</h2>
-
-                <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                    Update your account's profile information and email address.
-                </p>
+                <h2 className="text-lg font-medium text-gray-100 mt-5 text-center">Ubah Email</h2>
+                <p className='text-base-100 font-thin text-sm mt-5'>Masukan Email baru yang valid</p>
             </header>
 
-            <form onSubmit={submit} className="mt-6 space-y-6">
-                <div>
+            <form onSubmit={submit} className="mt-1 space-y-6 w-[400px]">
+                {/* <div>
                     <InputLabel htmlFor="name" value="Name" />
 
                     <TextInput
@@ -44,10 +41,10 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
                     />
 
                     <InputError className="mt-2" message={errors.name} />
-                </div>
+                </div> */}
 
                 <div>
-                    <InputLabel htmlFor="email" value="Email" />
+                    <InputLabel htmlFor="email" value="Email" className='text-white' />
 
                     <TextInput
                         id="email"
