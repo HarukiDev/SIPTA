@@ -1,6 +1,7 @@
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import Main from "./Dashboard/main";
+import LibraryCard from "@/Components/LibraryCard";
 
 export default function Dashboard(props) {
     return (

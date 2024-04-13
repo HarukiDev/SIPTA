@@ -36,3 +36,12 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/dospem', function() {
+    return Inertia::render('DosenPembimbing');
+})->middleware(['auth', 'verified'])->name('dospem');
+
+
+Route::get('/tugasakhir', function() {
+    return Inertia::render('TugasAkhir');
+})->middleware(['auth', 'verified'])->name('tugasakhir');

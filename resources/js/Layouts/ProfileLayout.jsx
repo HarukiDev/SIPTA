@@ -30,7 +30,7 @@ export default function ProfileLayout() {
                             <a>Ganti Password</a>
                         </li>
                         <li>
-                            <a>Detail Akun</a>
+                            <a href={route("profile.edit")}>Edit Profil</a>
                         </li>
                     </ul>
                 </details>
