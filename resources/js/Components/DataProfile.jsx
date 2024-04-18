@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function DataProfile() {
+export default function DataProfile(nama) {
   return (
     <div className="ml-16 bg-base-100 shadow-lg p-2 mt-2 rounded-lg overflow-auto">
       <h1 className="text-secondary text-xl font-bold mb-3 text-left">
@@ -11,7 +11,7 @@ export default function DataProfile() {
           <tr>
             <th className="text-secondary pr-3 text-left">No. Induk Mahasiswa</th>
             <td className="pr-1">:</td>
-            <td className="font-light">09021282227090</td>
+            <td className="font-light">{{nama}.user.nim}</td>
           </tr>
           <tr>
             <th className="text-secondary pr-3 text-left">Dosen Pembimbing Akademik</th>

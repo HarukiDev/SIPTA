@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 
-export default function Authenticated({ auth, header, children }) {
+export default function Authenticated({ auth, akademiks, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
 
