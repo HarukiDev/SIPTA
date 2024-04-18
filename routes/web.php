@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AkademikController;
+use App\Http\Controllers\DosenController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Akademik;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -35,12 +38,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
 require __DIR__.'/auth.php';
 
-Route::get('/dospem', function() {
-    return Inertia::render('DosenPembimbing');
-})->middleware(['auth', 'verified'])->name('dospem');
+route::get('/profile/update', function() {
+    return Inertia::render('Profile/Update');
+})->middleware(['auth', 'verified'])->name('update');
 
+route::get('/profile/reset_password', function() {
+    return Inertia::render('Profile/ResetPassword');
+})->middleware(['auth', 'verified'])->name('reset');
+
+Route::get('/dospem', [DosenController::class, 'index'])->name('dospem');
 
 Route::get('/tugasakhir', function() {
     return Inertia::render('TugasAkhir');

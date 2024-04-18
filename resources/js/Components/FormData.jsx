@@ -13,7 +13,7 @@ export default function FormData() {
         dospem: "",
         jurusan: "",
         tahunajaran: "",
-    });
+    }); 
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -26,7 +26,7 @@ export default function FormData() {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route("tugasakhir"));
+        post(route('update'));
     };
 
     return (

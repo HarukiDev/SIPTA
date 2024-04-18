@@ -21,6 +21,15 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('telp')->unique();
+            $table->string('nim')->unique();
+            $table->string('dospem');
+            $table->string('alamat');
+            $table->string('tempatlahir');
+            $table->string('tanggallahir');
+            $table->string('jeniskelamin');
+            $table->string('kewarganegaraan');
+            $table->string('agama');
         });
     }
 

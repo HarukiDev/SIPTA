@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function main() {
+export default function main({ nama, totalsks, metodologi, kkn, ipk }) {
     return (
         <div className="overflow-hidden min-h-full bg-base-200 pb-7">
             <div className="hero mx-4 mt-2">
@@ -8,7 +8,7 @@ export default function main() {
                     <img src="/images/welcome.svg" className="max-w-sm" />
                     <div>
                         <h1 className="text-3xl font-extrabold text-base-100">
-                            Hai, Aerith
+                            Hai, {nama}
                         </h1>
                         <p className="py-6 text-base-100">
                             Selamat Datang di Website Sistem Informasi
@@ -38,25 +38,49 @@ export default function main() {
                             <p className="pt-10">
                                 <div className="flex flex-col items-start">
                                     <p className="mb-1 text-l">
-                                        <i class='bx bx-checkbox'>
+                                        <i
+                                            class={
+                                                totalsks >= 130
+                                                    ? "bx bx-checkbox-checked"
+                                                    : "bx bx-checkbox"
+                                            }
+                                        >
                                             Jumlah SKS yang telah ditempuh 130
                                             SKS
                                         </i>
                                     </p>
                                     <p className="mb-1 text-l">
-                                        <i class='bx bx-checkbox'>
+                                        <i
+                                            class={
+                                                metodologi
+                                                    ? "bx bx-checkbox-checked"
+                                                    : "bx bx-checkbox"
+                                            }
+                                        >
                                             Telah lulus mata kuliah Metodologi
                                             Penelitian Komunikasi
                                         </i>
                                     </p>
                                     <p className="mb-1 text-l">
-                                        <i class='bx bx-checkbox'>
+                                        <i
+                                            class={
+                                                kkn
+                                                    ? "bx bx-checkbox-checked"
+                                                    : "bx bx-checkbox"
+                                            }
+                                        >
                                             Telah menyelesaikan KKN atau Kerja
                                             Praktik
                                         </i>
                                     </p>
                                     <p className="mb-1 text-l">
-                                        <i class='bx bx-checkbox'>
+                                        <i
+                                            class={
+                                                ipk >= 2.0
+                                                    ? "bx bx-checkbox-checked"
+                                                    : "bx bx-checkbox"
+                                            }
+                                        >
                                             Indeks Prestasi Kumulatif minimal
                                             2,00
                                         </i>

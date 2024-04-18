@@ -1,41 +1,52 @@
-import { useEffect } from 'react';
-import Checkbox from '@/Components/Checkbox';
-import GuestLayout from '@/Layouts/GuestLayout';
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
-import { Head, Link, useForm } from '@inertiajs/react';
+import { useEffect } from "react";
+import Checkbox from "@/Components/Checkbox";
+import GuestLayout from "@/Layouts/GuestLayout";
+import InputError from "@/Components/InputError";
+import InputLabel from "@/Components/InputLabel";
+import PrimaryButton from "@/Components/PrimaryButton";
+import TextInput from "@/Components/TextInput";
+import { Head, Link, useForm } from "@inertiajs/react";
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
-        email: '',
-        password: '',
-        remember: '',
+        email: "",
+        password: "",
+        remember: "",
     });
 
     useEffect(() => {
         return () => {
-            reset('password');
+            reset("password");
         };
     }, []);
 
     const handleOnChange = (event) => {
-        setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
+        setData(
+            event.target.name,
+            event.target.type === "checkbox"
+                ? event.target.checked
+                : event.target.value
+        );
     };
 
     const submit = (e) => {
         e.preventDefault();
 
-        post(route('login'));
+        post(route("login"));
     };
 
     return (
         <GuestLayout>
             <Head title="Log in" />
 
-            {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
-            <h1 className='text-center text-secondary font-extrabold text-2xl mb-5'>Login</h1>
+            {status && (
+                <div className="mb-4 font-medium text-sm text-green-600">
+                    {status}
+                </div>
+            )}
+            <h1 className="text-center text-secondary font-extrabold text-2xl mb-5">
+                Login
+            </h1>
             <form onSubmit={submit}>
                 <div>
                     <InputLabel htmlFor="email" value="Email" />
@@ -72,22 +83,35 @@ export default function Login({ status, canResetPassword }) {
 
                 <div className="block mt-4">
                     <label className="flex items-center">
-                        <Checkbox name="remember" value={data.remember} onChange={handleOnChange} />
-                        <span className="ml-2 text-sm text-secondary font-light ">Remember me</span>
+                        <Checkbox
+                            name="remember"
+                            value={data.remember}
+                            onChange={handleOnChange}
+                        />
+                        <span className="ml-2 text-sm text-secondary font-light ">
+                            Remember me
+                        </span>
                     </label>
                 </div>
 
                 <div className="flex flex-col items-center mt-4">
                     {canResetPassword && (
                         <Link
-                            href={route('password.request')}
+                            href={route("password.request")}
                             className="underline text-sm text-secondary font-light hover:font-normal rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
                         >
                             Forgot your password?
                         </Link>
                     )}
 
-                    <PrimaryButton className="ml-4 mt-5" disabled={processing}>
+                    {/* <Link
+                        href={route("register")}
+                        className="underline text-sm text-secondary font-light hover:font-normal rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                    >
+                        Register
+                    </Link> */}
+
+                    <PrimaryButton className="ml-4 mt-3" disabled={processing}>
                         Log in
                     </PrimaryButton>
                 </div>

@@ -23,7 +23,7 @@ export default function FilterDosen() {
     }
 
     return (
-      <div className="flex items-center justify-center bg-base-100 w-[990px] h-[100px] drop-shadow-lg rounded-lg my-3">
+      <div className="flex ml-12 flex-auto items-center justify-center bg-base-100 w-[890px] h-[100px] shadow-lg drop-shadow-md rounded-lg my-3">
         <form onSubmit={onSubmit} className="flex flex-row">
             <input
                 type="text"
@@ -31,10 +31,10 @@ export default function FilterDosen() {
                 id="nama_dosen"
                 value={formData.nama_dosen}
                 onChange={handleChange}
-                className="mr-2"
+                className="input  p-3 rounded-2xl input-secondary input-bordered mr-8"
             />
             <select
-                className="select w-full max-w-xs mr-2"
+                className="select select-secondary rounded-2xl w-full max-w-xs mr-8"
                 id="jurusan"
                 value={formData.jurusan}
                 onChange={handleChange}
@@ -48,7 +48,7 @@ export default function FilterDosen() {
                 <option>SK</option>
             </select>
             <select
-                className="select w-full max-w-xs mr-2"
+                className="select select-secondary rounded-2xl w-full max-w-xs mr-3"
                 id="bidang_keahlian"
                 value={formData.bidang_keahlian}
                 onChange={handleChange}
@@ -61,7 +61,7 @@ export default function FilterDosen() {
                 <option>Data Mining</option>
             </select>
             
-            <button type="submit" className="ml-4 bg-secondary py-2 px-2 text-white rounded-lg">Search</button>
+            <button type="submit" className="ml-4 bg-secondary py-2 px-2 text-white rounded-2xl">Search</button>
         </form>
       </div>
 
