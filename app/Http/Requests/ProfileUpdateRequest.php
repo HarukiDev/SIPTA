@@ -22,6 +22,7 @@ class ProfileUpdateRequest extends FormRequest
             'dospem' => ['string', 'max:255'],
             'alamat' => ['string', 'max:255'],
             'telp' => ['string', 'max:255'],
+            'image' => ['string', 'max:255'],
             'tempatlahir' => ['string', 'max:255'],
             'tanggallahir' => ['string', 'max:255'],
             'jeniskelamin' => ['string', 'max:255'],

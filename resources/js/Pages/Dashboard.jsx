@@ -4,7 +4,7 @@ import Main from "./Dashboard/main";
 import { usePage } from "@inertiajs/react";
 
 export default function Dashboard({ props, auth, akademik }) {
-    console.log(usePage().props)
+    // console.log(usePage().props);
     return (
         <Authenticated
             auth={auth}
@@ -15,14 +15,13 @@ export default function Dashboard({ props, auth, akademik }) {
                 </h2>
             }
         >
-            totalsks, metodologi, kkn, ipk
             <Head title="Dashboard" />
             <Main
                 nama={auth.user.name}
-                totalsks={akademik[0].totalsks}
-                metodologi={akademik[0].metodologi}
-                kkn={akademik[0].kkn}
-                ipk={akademik[0].ipk}
+                totalsks={akademik.data[0].akademiks.totalsks}
+                metodologi={akademik.data[0].akademiks.metodologi}
+                kkn={akademik.data[0].akademiks.kkn}
+                ipk={akademik.data[0].akademiks.ipk}
             />
         </Authenticated>
     );

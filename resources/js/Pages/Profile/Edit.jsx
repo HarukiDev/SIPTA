@@ -5,12 +5,13 @@ import { usePage } from "@inertiajs/react";
 
 import IpkBox from "@/Components/IpkBox"; // Add this import statement
 
-export default function Edit({ auth, akademiks }) {
+export default function Edit({ auth, akademik, image }) {
     // console.log(usePage().props)
+    let data = akademik.data[0].akademiks;
     return (
         <Authenticated
             auth={auth}
-            akademiks={akademiks}
+            akademik={akademik}
             header={
                 <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                     Profile
@@ -129,20 +130,20 @@ export default function Edit({ auth, akademiks }) {
                         {/* {Akademikss.map((akademiks, index) => ( */}
                             <IpkBox
                                 // key={index}
-                                totalsks={akademiks[0].totalsks}
-                                s1={akademiks[0].s1}
-                                s2={akademiks[0].s2}
-                                s3={akademiks[0].s3}
-                                s4={akademiks[0].s4}
-                                s5={akademiks[0].s5}
-                                s6={akademiks[0].s6}
-                                s7={akademiks[0].s7}
-                                s8={akademiks[0].s8}
+                                totalsks={data.totalsks}
+                                s1={data.s1}
+                                s2={data.s2}
+                                s3={data.s3}
+                                s4={data.s4}
+                                s5={data.s5}
+                                s6={data.s6}
+                                s7={data.s7}
+                                s8={data.s8}
                             />
                         {/* ))} */}
                     </div>
                 </div>
-                <ProfileLayout nama={auth.user.name} nim={auth.user.nim} />
+                <ProfileLayout nama={auth.user.name} nim={auth.user.nim} image={auth.user.image} />
             </div>
         </Authenticated>
     );

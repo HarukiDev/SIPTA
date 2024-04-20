@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use App\Models\Akademik;
 use Illuminate\Http\Request;
+use App\Http\Resources\AkademikResources;
 
 class DashboardController extends Controller
 {
@@ -14,9 +16,13 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        
+    
+        // Rendering view using Inertia and passing the academic data
+        return Inertia::render('Dashboard', [
+            'akademik' => AkademikResources::collection(Akademik::all()),
+        ]);
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *

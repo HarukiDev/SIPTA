@@ -19,17 +19,18 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('image')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->string('telp')->unique();
-            $table->string('nim')->unique();
-            $table->string('dospem');
-            $table->string('alamat');
-            $table->string('tempatlahir');
-            $table->string('tanggallahir');
-            $table->string('jeniskelamin');
-            $table->string('kewarganegaraan');
-            $table->string('agama');
+            $table->string('telp')->unique()->nullable();
+            $table->string('nim')->unique()->nullable();
+            $table->string('dospem')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('tempatlahir')->nullable();
+            $table->string('tanggallahir')->nullable();
+            $table->string('jeniskelamin')->nullable();
+            $table->string('kewarganegaraan')->nullable();
+            $table->string('agama')->nullable();
         });
     }
 
