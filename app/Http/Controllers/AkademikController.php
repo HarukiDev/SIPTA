@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Akademik;
 use App\Http\Requests\StoreAkademikRequest;
 use App\Http\Requests\UpdateAkademikRequest;
+use App\Http\Resources\AkademikResources;
 use Inertia\Inertia;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
@@ -17,25 +18,26 @@ class AkademikController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Edit', [
-            'Akademiks' => Akademik::all()->map(function ($akademik) {
-                return [
-                    'id' => $akademik->id,
-                    'totalsks' => $akademik->totalsks,
-                    'metodologi' => $akademik->metodologi,
-                    'kkn' => $akademik->kkn,
-                    'ipk' => $akademik->ipk,
-                    's1' => $akademik->s1,
-                    's2' => $akademik->s2,
-                    's3' => $akademik->s3,
-                    's4' => $akademik->s4,
-                    's5' => $akademik->s5,
-                    's6' => $akademik->s6,
-                    's7' => $akademik->s7,
-                    's8' => $akademik->s8,
-                ];
-            }),
-        ]);
+        // return Inertia::render('Edit', [
+        //     'Akademiks' => Akademik::all()->map(function ($akademik) {
+        //         return [
+        //             'id' => $akademik->id,
+        //             'totalsks' => $akademik->totalsks,
+        //             'metodologi' => $akademik->metodologi,
+        //             'kkn' => $akademik->kkn,
+        //             'ipk' => $akademik->ipk,
+        //             's1' => $akademik->s1,
+        //             's2' => $akademik->s2,
+        //             's3' => $akademik->s3,
+        //             's4' => $akademik->s4,
+        //             's5' => $akademik->s5,
+        //             's6' => $akademik->s6,
+        //             's7' => $akademik->s7,
+        //             's8' => $akademik->s8,
+        //         ];
+        //     }),
+        // ]);
+        return AkademikResources::collection(Akademik::all());
     }
 
     public function profile()

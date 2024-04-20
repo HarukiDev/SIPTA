@@ -1,6 +1,13 @@
 import React from "react";
 
 export default function main({ nama, totalsks, metodologi, kkn, ipk }) {
+    const fulfilledRequirements =
+        (totalsks >= 130 ? 1 : 0) +
+        (metodologi ? 1 : 0) +
+        (kkn ? 1 : 0) +
+        (ipk >= 2.0 ? 1 : 0);
+    const progress = (fulfilledRequirements / 4) * 100; // Total persyaratan adalah 4
+
     return (
         <div className="overflow-hidden min-h-full bg-base-200 pb-7">
             <div className="hero mx-4 mt-2">
@@ -41,8 +48,8 @@ export default function main({ nama, totalsks, metodologi, kkn, ipk }) {
                                         <i
                                             class={
                                                 totalsks >= 130
-                                                    ? "bx bx-checkbox-checked"
-                                                    : "bx bx-checkbox"
+                                                    ? "bx bx-checkbox-checked text-success text-[17px]"
+                                                    : "bx bx-checkbox text-error text-[17px]"
                                             }
                                         >
                                             Jumlah SKS yang telah ditempuh 130
@@ -53,8 +60,8 @@ export default function main({ nama, totalsks, metodologi, kkn, ipk }) {
                                         <i
                                             class={
                                                 metodologi
-                                                    ? "bx bx-checkbox-checked"
-                                                    : "bx bx-checkbox"
+                                                    ? "bx bx-checkbox-checked text-success text-[17px]"
+                                                    : "bx bx-checkbox text-error text-[17px]"
                                             }
                                         >
                                             Telah lulus mata kuliah Metodologi
@@ -65,8 +72,8 @@ export default function main({ nama, totalsks, metodologi, kkn, ipk }) {
                                         <i
                                             class={
                                                 kkn
-                                                    ? "bx bx-checkbox-checked"
-                                                    : "bx bx-checkbox"
+                                                    ? "bx bx-checkbox-checked text-success text-[17px]"
+                                                    : "bx bx-checkbox text-error text-[17px]"
                                             }
                                         >
                                             Telah menyelesaikan KKN atau Kerja
@@ -77,8 +84,8 @@ export default function main({ nama, totalsks, metodologi, kkn, ipk }) {
                                         <i
                                             class={
                                                 ipk >= 2.0
-                                                    ? "bx bx-checkbox-checked"
-                                                    : "bx bx-checkbox"
+                                                    ? "bx bx-checkbox-checked text-success text-[17px]"
+                                                    : "bx bx-checkbox text-error text-[17px]"
                                             }
                                         >
                                             Indeks Prestasi Kumulatif minimal
@@ -99,13 +106,13 @@ export default function main({ nama, totalsks, metodologi, kkn, ipk }) {
                             <div
                                 className="radial-progress mt-4 text-secondary bg-base-200"
                                 style={{
-                                    "--value": "20",
+                                    "--value": `${progress.toFixed(2)}`,
                                     "--size": "12rem",
                                     "--thickness": "1.5rem",
                                 }}
                                 role="progressbar"
                             >
-                                20%
+                                {`${progress.toFixed(2)}%`}
                             </div>
                         </div>
                     </div>
