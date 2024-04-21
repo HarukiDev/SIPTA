@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "@inertiajs/react";
-import asset from 'laravel-mix/src/Asset';
-
 
 export default function ProfileLayout({ nama, nim, image }) {
     return (
@@ -10,7 +8,15 @@ export default function ProfileLayout({ nama, nim, image }) {
             <div className="flex flex-col mt-10 items-center">
                 <div className="avatar">
                     <div className="w-24 rounded-full">
-                        <img src={asset(`/storage/${image}`)} alt="Guest" />
+                        {image ? (
+                            <img
+                                src={`${window.assetPath}/storage/${image}`}
+                                alt="Profile Picture"
+                            />
+                        ) : (
+                            <img src="/images/guest.png" alt="Guest" />
+                        )}
+                        {/* <img src={`${window.assetPath}/storage/${image}`} alt="Guest" /> */}
                     </div>
                 </div>
                 <p className="mt-3 font-semibold">{nama}</p>

@@ -11,6 +11,9 @@ dependencies:
   axios:
     specifier: ^1.6.8
     version: 1.6.8
+  theme-change:
+    specifier: ^2.5.0
+    version: 2.5.0
 
 devDependencies:
   '@headlessui/react':
@@ -1634,6 +1637,10 @@ packages:
     transitivePeerDependencies:
       - ts-node
     dev: true
+
+  /theme-change@2.5.0:
+    resolution: {integrity: sha512-B/UdsgdHAGhSKHTAQnxg/etN0RaMDpehuJmZIjLMDVJ6DGIliRHGD6pODi1CXLQAN9GV0GSyB3G6yCuK05PkPQ==}
+    dev: false
 
   /thenify-all@1.6.0:
     resolution: {integrity: sha512-RNxQH/qI8/t3thXJDwcstUO4zeqo64+Uy/+sNVRBx4Xn2OX+OZ9oP+iJnNFqplFra2ZUVeKCSa2oVWi3T4uVmA==}

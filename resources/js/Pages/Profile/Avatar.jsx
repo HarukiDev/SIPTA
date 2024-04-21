@@ -25,7 +25,7 @@ export default function Edit({ auth }) {
                 <div className=" mt-3">
                     <UploadAvatar />
                 </div>
-                <ProfileLayout nama={auth.user.name} nim={auth.user.nim} />
+                <ProfileLayout nama={auth.user.name} nim={auth.user.nim} image={auth.user.image} />
             </div>
         </Authenticated>
     );

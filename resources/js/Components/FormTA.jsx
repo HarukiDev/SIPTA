@@ -2,15 +2,18 @@ import React from "react";
 import InputLabel from "./InputLabel";
 import TextInput from "./TextInput";
 import { useForm } from "@inertiajs/react";
+import { usePage } from "@inertiajs/react";
 
 export default function FormTA() {
+    const user = usePage().props.auth.user;
+
     const { data, setData, post } = useForm({
         judul: "",
         topik: "",
         excerpt: "",
         penulis: "",
-        nim: "",
-        dospem: "",
+        nim: user.nim,
+        dospem: user.dospem,
         jurusan: "",
         tahunajaran: "",
     });
@@ -67,6 +70,7 @@ export default function FormTA() {
                 value={data.nim}
                 onChange={handleChange}
                 className="mt-1 block w-full"
+                disabled readOnly    
             />
             <InputLabel htmlfor="dospem" value="Dospem" />
             <TextInput
@@ -76,6 +80,7 @@ export default function FormTA() {
                 value={data.dospem}
                 onChange={handleChange}
                 className="mt-1 block w-full"
+                disabled readOnly    
             />
             <InputLabel htmlfor="jurusan" value="Jurusan" />
             <TextInput

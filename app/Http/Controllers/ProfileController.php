@@ -87,7 +87,7 @@ class ProfileController extends Controller
         return Redirect::to('/');
 
     }
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         // Validasi dan penyimpanan gambar
         if ($request->file('image')) {
@@ -98,8 +98,7 @@ class ProfileController extends Controller
             $request->user()->update(['image' => $path]);
         }
     
-        // Mengembalikan respons Inertia dengan pesan kesuksesan
-        return Inertia::render('Profile/Avatar')->with("success", "Foto berhasil diupload");
+        return Redirect::route('profile.edit');
     }
     
 }

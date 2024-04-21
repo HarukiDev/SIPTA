@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function Alert({ message }) {
+export default function Alert({ message, className }) {
     return (
         <div
             role="alert"
-            className="ml-36 mt-5 alert alert-success absolute w-[500px]"
+            className="ml-26 mt-5 absolute top-0 alert w-[500px] alert-success"
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"

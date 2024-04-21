@@ -29,7 +29,7 @@ export default function Edit({ auth }) {
                         <IpkBox />
                     </div> */}
                 </div>
-                <ProfileLayout nama={auth.user.name} nim={auth.user.nim} />
+                <ProfileLayout nama={auth.user.name} nim={auth.user.nim} image={auth.user.image} />
             </div>
         </Authenticated>
     );

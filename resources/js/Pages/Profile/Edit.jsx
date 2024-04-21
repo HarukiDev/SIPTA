@@ -49,7 +49,7 @@ export default function Edit({ auth, akademik, image }) {
                                 </tr>
                                 <tr>
                                     <th className="text-secondary pr-3 text-left">
-                                        Dosen Pembimbing Akademiks
+                                        Dosen Pembimbing Akademik
                                     </th>
                                     <td className="pr-1">:</td>
                                     <td className="font-light">
