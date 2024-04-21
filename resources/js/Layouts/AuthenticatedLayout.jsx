@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useEffect } from "react";
+import { themeChange } from "theme-change";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 
 export default function Authenticated({ auth, akademik, children }) {
-    const [showingNavigationDropdown, setShowingNavigationDropdown] =
-        useState(false);
+    useEffect(() => {
+        themeChange(false);
+    }, []);
 
     return (
         <div className="flex">
@@ -11,16 +14,28 @@ export default function Authenticated({ auth, akademik, children }) {
             <div className="flex flex-col min-h-full w-[235px] bg-base-100 drop-shadow-2xl items-center pb-64 fixed">
                 <ApplicationLogo className2={"w-[196px] h-[156.65px] mt-5"} />
                 <div className="flex flex-col mt-10">
-                    <a href={route("dashboard")} className="btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-base-100 text-center">
+                    <a
+                        href={route("dashboard")}
+                        className="btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-base-100 text-center"
+                    >
                         Beranda
                     </a>
-                    <a href={route("tugasakhir")} className="btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-base-100 text-center">
+                    <a
+                        href={route("tugasakhir")}
+                        className="btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-base-100 text-center"
+                    >
                         Tugas Akhir
                     </a>
-                    <a href={route("dospem")} className="btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-base-100 text-center">
+                    <a
+                        href={route("dospem")}
+                        className="btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-base-100 text-center"
+                    >
                         Dosen Pembimbing
                     </a>
-                    <a href={route("profile.edit")} className="btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-white text-center">
+                    <a
+                        href={route("profile.edit")}
+                        className="btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-white text-center"
+                    >
                         Profil
                     </a>
                 </div>
@@ -29,7 +44,7 @@ export default function Authenticated({ auth, akademik, children }) {
                     <label className="cursor-pointer grid place-items-center">
                         <input
                             type="checkbox"
-                            value="dark"
+                            data-toggle-theme="light,dark"
                             className="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2"
                         />
                         <svg
