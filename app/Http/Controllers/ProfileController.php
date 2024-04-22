@@ -5,14 +5,15 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use Inertia\Response;
 use App\Models\Akademik;
+use App\Models\TugasAkhir;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Resources\AkademikResources;
 use App\Http\Requests\ProfileUpdateRequest;
-use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ProfileController extends Controller
 {   
@@ -101,4 +102,14 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit');
     }
     
+    /**
+     * Get all of the comments for the ProfileController
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function TugasAkhir(): HasMany
+    {
+        return $this->hasMany(TugasAkhir::class, 'nim', 'nim');
+    }
+
 }
