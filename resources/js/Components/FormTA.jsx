@@ -1,14 +1,14 @@
 import React from "react";
 import InputLabel from "./InputLabel";
 import TextInput from "./TextInput";
-import { useForm } from "@inertiajs/react";
-import { usePage } from "@inertiajs/react";
+import { useForm, usePage } from "@inertiajs/react";
+import axios from "axios";
 
 export default function FormTA() {
     const user = usePage().props.auth.user;
 
-    const { data, setData, post } = useForm({
-        judul: "",
+    const { data, setData } = useForm({
+        title: "",
         topik: "",
         excerpt: "",
         penulis: "",
@@ -16,6 +16,7 @@ export default function FormTA() {
         dospem: user.dospem,
         jurusan: "",
         tahunajaran: "",
+        laporan: "",
     });
 
     const handleChange = (e) => {
@@ -29,22 +30,33 @@ export default function FormTA() {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route("tugasakhir"));
+        axios
+        .post(route("tugasakhir.store"), data) // Mengirim data formulir ke rute tugasakhir.store
+        .then((response) => {
+            console.log(response.data); // Lakukan penanganan respons yang sesuai
+        })
+        .catch((error) => {
+            console.error(error); // Lakukan penanganan kesalahan yang sesuai
+        });
     };
 
     return (
-        <form onSubmit={submit} className="flex flex-col">
-            <InputLabel htmlfor="judul" value="Judul" />
+        <form
+            onSubmit={submit}
+            className="flex flex-col "
+            encType="multipart/form-data"
+        >
+            <InputLabel htmlFor="title" value="title" />
             <TextInput
-                id="judul"
+                id="title"
                 type="text"
-                name="judul"
-                value={data.judul}
+                name="title"
+                value={data.title}
                 onChange={handleChange}
                 className="mt-1 block w-[950px]"
                 isFocused={true}
             />
-            <InputLabel htmlfor="topik" value="Topik" />
+            <InputLabel htmlFor="topik" value="Topik" />
             <TextInput
                 id="topik"
                 type="text"
@@ -53,7 +65,7 @@ export default function FormTA() {
                 onChange={handleChange}
                 className="mt-1 block w-full"
             />
-            <InputLabel htmlfor="excerpt" value="Excerpt" />
+            <InputLabel htmlFor="excerpt" value="Excerpt" />
             <TextInput
                 id="excerpt"
                 type="text"
@@ -62,7 +74,7 @@ export default function FormTA() {
                 onChange={handleChange}
                 className="mt-1 block w-full"
             />
-            <InputLabel htmlfor="nim" value="Nim" />
+            <InputLabel htmlFor="nim" value="Nim" />
             <TextInput
                 id="nim"
                 type="text"
@@ -70,9 +82,10 @@ export default function FormTA() {
                 value={data.nim}
                 onChange={handleChange}
                 className="mt-1 block w-full"
-                disabled readOnly    
+                disabled
+                readOnly
             />
-            <InputLabel htmlfor="dospem" value="Dospem" />
+            <InputLabel htmlFor="dospem" value="Dospem" />
             <TextInput
                 id="dospem"
                 type="text"
@@ -80,9 +93,10 @@ export default function FormTA() {
                 value={data.dospem}
                 onChange={handleChange}
                 className="mt-1 block w-full"
-                disabled readOnly    
+                disabled
+                readOnly
             />
-            <InputLabel htmlfor="jurusan" value="Jurusan" />
+            <InputLabel htmlFor="jurusan" value="Jurusan" />
             <TextInput
                 id="jurusan"
                 type="text"
@@ -91,7 +105,7 @@ export default function FormTA() {
                 onChange={handleChange}
                 className="mt-1 block w-full"
             />
-            <InputLabel htmlfor="tahunajaran" value="Tahun Ajaran" />
+            <InputLabel htmlFor="tahunajaran" value="Tahun Ajaran" />
             <TextInput
                 id="tahunajaran"
                 type="text"
@@ -100,14 +114,16 @@ export default function FormTA() {
                 onChange={handleChange}
                 className="mt-1 block w-full"
             />
-            <div className="mt-3 text-secondary">
-                File :{" "}
-                <input
-                    type="file"
-                    id="file"
-                    className="file-input file-input-secondary w-full max-w-xs file-input-md	"
-                />
-            </div>
+            <InputLabel htmlFor="laporan" value="File" />
+            <TextInput
+                type="file"
+                id="laporan"
+                name="laporan"
+                value={data.laporan}
+                onChange={handleChange}
+                className="file-input file-input-sm file-input-secondary
+                        file-input-bordered w-full max-w-xs"
+            />
             <button
                 type="submit"
                 className="mt-5 bg-secondary py-3 px-10 text-white rounded-lg self-end"

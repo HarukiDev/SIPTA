@@ -4,6 +4,8 @@ use App\Http\Controllers\AkademikController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TugasAkhirController;
+use App\Models\TugasAkhir;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -38,7 +40,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
 require __DIR__.'/auth.php';
 
 route::get('/profile/update', function() {
@@ -51,9 +52,15 @@ route::get('/profile/reset_password', function() {
 
 Route::get('/dospem', [DosenController::class, 'index'])->name('dospem');
 
-Route::get('/tugasakhir', function() {
-    return Inertia::render('TugasAkhir');
-})->middleware(['auth', 'verified'])->name('tugasakhir');
+// Route::get('/tugasakhir', function() {
+//     return Inertia::render('TugasAkhir');
+// })->middleware(['auth', 'verified'])->name('tugasakhir');
+Route::middleware('auth')->group(function () {
+    Route::get('/tugasakhir', [TugasAkhirController::class, 'create'])->name('tugasakhir');
+    Route::post('/tugasakhir', [TugasAkhirController::class, 'store'])->name('tugasakhir.store');
+    // Route::patch('/tugasakhir', [TugasAkhirController::class, 'update'])->name('tugasakhir.update');
+    // Route::delete('/tugasakhir', [TugasAkhirController::class, 'destroy'])->name('tugasakhir.destroy');
+});
 
 Route::get('/profile/avatar', function() {
     return Inertia::render("Profile/Avatar");
