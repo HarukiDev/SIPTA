@@ -9,7 +9,7 @@ export default function main({ nama, totalsks, metodologi, kkn, ipk }) {
     const progress = (fulfilledRequirements / 4) * 100; // Total persyaratan adalah 4
 
     return (
-        <div className="overflow-hidden min-h-full bg-base-200 pb-7">
+        <div className="overflow-hidden min-h-full bg-base-200 pb-10">
             <div className="hero mx-4 mt-2">
                 <div className="hero-content w-[990px] mr-6 flex-col lg:flex-row-reverse bg-secondary rounded-lg">
                     <img src="/images/welcome.svg" className="max-w-sm" />

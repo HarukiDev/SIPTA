@@ -1,4 +1,5 @@
 import React from "react";
+import Search from "./Search";
 
 export default function AdminNavbar() {
     return (
@@ -11,14 +12,12 @@ export default function AdminNavbar() {
             />
             {/* Navbar */}
             <div className="navbar bg-base-100 mt-[114px] z-0">
-                {" "}
-                {/* Atur margin atas sesuai dengan tinggi foto */}
                 <ul className="menu menu-horizontal py-3 mx-14 w-full shadow-xl rounded-xl">
                     <li>
-                        <a>Dosen</a>
+                        <a>Mahasiswa</a>
                     </li>
                     <li>
-                        <a>Mahasiswa</a>
+                        <a>Dosen</a>
                     </li>
                     <li>
                         <a>Tugas Akhir</a>

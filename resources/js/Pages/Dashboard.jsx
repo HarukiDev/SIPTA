@@ -14,6 +14,7 @@ export default function Dashboard({ props, auth, akademik }) {
                     Dashboard
                 </h2>
             }
+            className1="overflow-hidden"
         >
             <Head title="Dashboard" />
             <Main

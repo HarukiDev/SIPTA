@@ -43,7 +43,7 @@ export default function FormTA() {
     return (
         <form
             onSubmit={submit}
-            className="flex flex-col "
+            className="flex flex-col w-[950px]"
             encType="multipart/form-data"
         >
             <InputLabel htmlFor="title" value="title" />
@@ -63,7 +63,7 @@ export default function FormTA() {
                 name="topik"
                 value={data.topik}
                 onChange={handleChange}
-                className="mt-1 block w-full"
+                className="mt-1 block w-[950px]"
             />
             <InputLabel htmlFor="excerpt" value="Excerpt" />
             <TextInput
@@ -72,7 +72,7 @@ export default function FormTA() {
                 name="excerpt"
                 value={data.excerpt}
                 onChange={handleChange}
-                className="mt-1 block w-full"
+                className="mt-1 block w-[950px]"
             />
             <InputLabel htmlFor="nim" value="Nim" />
             <TextInput
@@ -81,7 +81,7 @@ export default function FormTA() {
                 name="nim"
                 value={data.nim}
                 onChange={handleChange}
-                className="mt-1 block w-full"
+                className="mt-1 block w-[950px]"
                 disabled
                 readOnly
             />
@@ -92,7 +92,7 @@ export default function FormTA() {
                 name="dospem"
                 value={data.dospem}
                 onChange={handleChange}
-                className="mt-1 block w-full"
+                className="mt-1 block w-[950px]"
                 disabled
                 readOnly
             />
@@ -103,7 +103,7 @@ export default function FormTA() {
                 name="jurusan"
                 value={data.jurusan}
                 onChange={handleChange}
-                className="mt-1 block w-full"
+                className="mt-1 block w-[950px]"
             />
             <InputLabel htmlFor="tahunajaran" value="Tahun Ajaran" />
             <TextInput
@@ -112,7 +112,7 @@ export default function FormTA() {
                 name="tahunajaran"
                 value={data.tahunajaran}
                 onChange={handleChange}
-                className="mt-1 block w-full"
+                className="mt-1 block w-[950px]"
             />
             <InputLabel htmlFor="laporan" value="File" />
             <TextInput
