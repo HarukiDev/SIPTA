@@ -3,7 +3,7 @@ import React from "react";
 export default function Search() {
     return (
         <div className="flex flex-row">
-            <label className="input input-bordered flex flex-row-reverse items-center gap-2">
+            <label className="input input-bordered flex flex-row-reverse items-center gap-2 mr-2">
                 <input type="text" className="grow" placeholder="Masukkan NIM" />
                 <svg
                     xmlns="http://www.w3.org/2000/svg"

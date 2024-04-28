@@ -1,40 +1,65 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { themeChange } from "theme-change";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 
-export default function Authenticated({ auth, akademik, children }) {
+export default function Authenticated({ auth, akademik, children, className1 }) {
     useEffect(() => {
         themeChange(false);
     }, []);
 
+    const [btnActive, setBtnActive] = useState(() => {
+        // Coba untuk mendapatkan status tombol dari penyimpanan lokal
+        const storedStatus = localStorage.getItem("btnActive");
+        // Jika tidak ada status yang disimpan, gunakan false sebagai default
+        return storedStatus ? JSON.parse(storedStatus) : false;
+    });
+
+    const handleClick = () => {
+        const newStatus = !btnActive;
+        // Simpan status baru ke penyimpanan lokal
+        localStorage.setItem("btnActive", JSON.stringify(newStatus));
+        setBtnActive(newStatus);
+    };
+
     return (
-        <div className="flex">
+        <div className={"flex" + className1}>
             {/* Elemen tetap */}
             <div className="flex flex-col min-h-full w-[235px] bg-base-100 drop-shadow-2xl items-center pb-64 fixed">
                 <ApplicationLogo className2={"w-[196px] h-[156.65px] mt-5"} />
                 <div className="flex flex-col mt-10">
                     <a
                         href={route("dashboard")}
-                        className="btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-base-100 text-center"
+                        className={`btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-base-100 text-center ${
+                            btnActive ? 'active:bg-primary' : ''
+                        }`}
+                        onClick={handleClick}
                     >
                         Beranda
                     </a>
                     <a
                         href={route("tugasakhir")}
-                        className="btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-base-100 text-center"
+                        className={`btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-base-100 text-center ${
+                            btnActive ? 'active:bg-primary' : ''
+                        }`}
+                        onClick={handleClick}
                     >
                         Tugas Akhir
                     </a>
                     <a
                         href={route("dospem")}
-                        className="btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-base-100 text-center"
+                        className={`btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-base-100 text-center ${
+                            btnActive ? 'active:bg-primary' : ''
+                        }`}
+                        onClick={handleClick}
                     >
                         Dosen Pembimbing
                     </a>
                     <a
                         href={route("profile.edit")}
-                        className="btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-white text-center"
+                        className={`btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-white text-center ${
+                            btnActive ? 'active:bg-primary' : ''
+                        }`}
+                        onClick={handleClick}
                     >
                         Profil
                     </a>

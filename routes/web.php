@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AkademikController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DosenController;
@@ -60,6 +61,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/tugasakhir', [TugasAkhirController::class, 'store'])->name('tugasakhir.store');
     // Route::patch('/tugasakhir', [TugasAkhirController::class, 'update'])->name('tugasakhir.update');
     // Route::delete('/tugasakhir', [TugasAkhirController::class, 'destroy'])->name('tugasakhir.destroy');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
+    Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
+    Route::delete('/admin/{user}', [AdminController::class, 'destroy'])->name('admin.destroy');
 });
 
 Route::get('/profile/avatar', function() {
