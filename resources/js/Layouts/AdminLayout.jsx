@@ -7,11 +7,11 @@ export default function AdminDashboard({ children }) {
     return (
         <div>
             <AdminNavbar />
-            <div className="flex flex-row mx-16 gap-5 justify-end">
+            {<div className="flex flex-row mx-16 gap-5 justify-end">
                 <p className="text-justify text-lg mt-3">List Mahasiswa</p>
                 <Search />
                 <a className="btn btn-primary" href={route("admin.create")}>Create</a>
-            </div>
+            </div>}
             <div className="mx-16">{children}</div>
         </div>
     );
