@@ -59,7 +59,7 @@ export default function UploadAvatar() {
                         name="image"
                         value={imagedata.image}
                         onChange={handleChange}
-                        className="file-input file-input-sm file-input-secondary
+                        className="file-input file-input-sm file-input-secondary pl-0
                         file-input-bordered w-full mt-10 ml-2 max-w-xs"
                     />
                 </div>

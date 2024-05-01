@@ -122,7 +122,7 @@ export default function FormTA() {
                 value={data.laporan}
                 onChange={handleChange}
                 className="file-input file-input-sm file-input-secondary
-                        file-input-bordered w-full max-w-xs"
+                        file-input-bordered w-full max-w-xs pl-0"
             />
             <button
                 type="submit"

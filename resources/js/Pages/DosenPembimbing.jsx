@@ -14,7 +14,7 @@ export default function DosenPembimbing() {
     return (
         <Authenticated>
             <Head title="Dosen Pembimbing" />
-            <div className="mx-4 mt-2">
+            <div className="mx-4">
                 <div className="flex flex-col">
                     <div className="">
                         <FilterDosen />

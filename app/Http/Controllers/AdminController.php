@@ -8,12 +8,13 @@ use App\Models\Admin;
 use App\Models\Dosen;
 use App\Models\Akademik;
 use App\Models\TugasAkhir;
-use App\Http\Requests\StoreAdminRequest;
-use App\Http\Requests\UpdateAdminRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StoreAdminRequest;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\UpdateAdminRequest;
+use App\Http\Requests\ProfileUpdateRequest;
 
 
 
@@ -68,9 +69,11 @@ class AdminController extends Controller
             'password' => 'required',
         ]);
 
+        $validateData['password'] = bcrypt($validateData['password']);
+
         User::create($validateData);
 
-        return to_route('admin');
+        return to_route('/admin');
     }
 
     /**
@@ -79,9 +82,11 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function show(Admin $admin)
+    public function show(User $user)
     {
-        //
+        return Inertia::render('AdminDashboard/Show', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -90,23 +95,26 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admin $admin)
+    public function edit(User $user)
     {
-        //
+        return Inertia::render('AdminDashboard/Edit', [
+            'user' => $user
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateAdminRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAdminRequest $request, Admin $admin)
+    public function update(UpdateAdminRequest $request,User $user): RedirectResponse
     {
-        //
-    }
+        $user->update($request->validated());
 
+        return redirect()->route('admin');
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -115,9 +123,9 @@ class AdminController extends Controller
      */
     public function destroy(User $user)
     {   
-        // if($user->image) {
-        //     Storage::delete([$user->image]);
-        // }
+        if($user->image) {
+            Storage::delete([$user->image]);
+        }
 
         $user->delete();
     }

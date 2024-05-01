@@ -1,5 +1,4 @@
 import React from "react";
-import PrimaryButton from "./PrimaryButton";
 import { useForm } from "@inertiajs/react";
 
 export default function Trow({ nim, name, email, index }) {
@@ -19,8 +18,8 @@ export default function Trow({ nim, name, email, index }) {
             <td>{name}</td>
             <th>{email}</th>
             <th className="flex flex-row gap-2">
-                <PrimaryButton className="bg-success">Show</PrimaryButton>
-                <PrimaryButton className="bg-warning">Edit</PrimaryButton>
+                <a href={route("admin.show", { user: index})} className="btn btn-success">Show</a>
+                <a href={route("admin.edit", { user: index})} className="btn btn-warning">Edit</a>
                 <form onSubmit={handleSubmit} >
                     <button className="btn btn-error" type="submit">Delete</button>
                 </form>

@@ -3,7 +3,7 @@ import AdminLayout from "@/Layouts/AdminLayout";
 import { usePage } from "@inertiajs/react";
 import Trow from "@/Components/Trow";
 
-export default function AdminDashboard({ auth }) {
+export default function AdminDashboard() {
     const { mahasiswa } = usePage().props; // Akses 'mahasiswa' dari properti halaman
     console.log(usePage().props);
 
