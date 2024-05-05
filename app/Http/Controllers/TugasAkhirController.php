@@ -19,10 +19,10 @@ class TugasAkhirController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    // public function index()
-    // {
-    //     return Inertia::render('TugasAkhir');
-    // }
+    public function index()
+    {
+        return Inertia::render('TugasAkhir');
+    }
 
 /**
  * Show the form for creating a new resource.

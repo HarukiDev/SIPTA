@@ -4,7 +4,8 @@ import FilterDosen from "@/Components/FilterDosen";
 import DosenCard from "@/Components/DosenCard";
 import { Head, useForm, usePage } from "@inertiajs/react";
 
-export default function DosenPembimbing() {
+export default function DosenPembimbing({auth}) {
+    console.log(usePage().props);
     const { dosens } = usePage().props; // Akses 'dosens' dari properti halaman
     const bidangArray = dosens.map((dosen) => dosen.bidang.split(",").map((item) => item.trim()));
 
@@ -12,7 +13,9 @@ export default function DosenPembimbing() {
     // untuk menangani setiap dosen secara individual. Namun, untuk sekarang, saya akan biarkan seperti ini.
 
     return (
-        <Authenticated>
+        <Authenticated
+        auth={auth}
+        >
             <Head title="Dosen Pembimbing" />
             <div className="mx-4">
                 <div className="flex flex-col">
