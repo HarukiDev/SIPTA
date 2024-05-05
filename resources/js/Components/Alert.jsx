@@ -4,8 +4,8 @@ export default function Alert({ message, className }) {
     return (
         <div
             role="alert"
-            className="ml-26 mt-5 absolute top-0 alert w-[500px] alert-success"
-        >
+            className="mx-auto top-0 bottom-0 left-0 right-0 alert w-[500px] alert-success"
+            >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="stroke-current shrink-0 h-6 w-6"

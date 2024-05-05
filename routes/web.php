@@ -1,15 +1,16 @@
 <?php
 
+use Inertia\Inertia;
+use App\Models\TugasAkhir;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AkademikController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AkademikController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminDosenController;
 use App\Http\Controllers\TugasAkhirController;
-use App\Models\TugasAkhir;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,14 +64,24 @@ Route::middleware('auth')->group(function () {
     // Route::delete('/tugasakhir', [TugasAkhirController::class, 'destroy'])->name('tugasakhir.destroy');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-    Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
-    Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
-    Route::delete('/admin/{user}', [AdminController::class, 'destroy'])->name('admin.destroy');
-    Route::get('/admin/{user}', [AdminController::class, 'show'])->name('admin.show');
-    Route::get('/admin/{user}/edit', [AdminController::class, 'edit'])->name('admin.edit');
-    Route::patch('/admin/{user}', [AdminController::class, 'update'])->name('admin.update');
+Route::middleware('admin')->group(function () {
+    Route::get('/admin/mahasiswa', [AdminController::class, 'index'])->name('admin');
+    Route::get('/admin/mahasiswa/create', [AdminController::class, 'create'])->name('admin.create');
+    Route::post('/admin/mahasiswa', [AdminController::class, 'store'])->name('admin.store');
+    Route::delete('/admin/mahasiswa/{user}', [AdminController::class, 'destroy'])->name('admin.destroy');
+    Route::get('/admin/mahasiswa/{user}', [AdminController::class, 'show'])->name('admin.show');
+    Route::get('/admin/mahasiswa/{user}/edit', [AdminController::class, 'edit'])->name('admin.edit');
+    Route::patch('/admin/mahasiswa/{user}', [AdminController::class, 'update'])->name('admin.update');
+});
+
+Route::middleware('admin')->group(function () {
+    Route::get('/admin/dosen', [AdminDosenController::class, 'index'])->name('dosen');
+    Route::get('/admin/dosen/create', [AdminDosenController::class, 'create'])->name('dosen.create');
+    Route::post('/admin/dosen', [AdminDosenController::class, 'store'])->name('dosen.store');
+    Route::delete('/admin/dosen/{dosen}', [AdminDosenController::class, 'destroy'])->name('dosen.destroy');
+    Route::get('/admin/dosen/{dosen}', [AdminDosenController::class, 'show'])->name('dosen.show');
+    Route::get('/admin/dosen/{dosen}/edit', [AdminDosenController::class, 'edit'])->name('dosen.edit');
+    Route::patch('/admin/dosen/{dosen}', [AdminDosenController::class, 'update'])->name('dosen.update');
 });
 
 Route::get('/profile/avatar', function() {

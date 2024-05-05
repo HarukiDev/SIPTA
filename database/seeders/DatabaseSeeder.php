@@ -86,7 +86,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Dr. M Fachrrurrozi, M.T.',
             'jurusan' => 'Tehnik Informatika',
             'bidang' => 'Image Processing, Computer Vision, Software Development',
-            'telp' => '62852-1335-5478',
+            'telp' => '6285213355478',
             'foto' => false
         ]);
 

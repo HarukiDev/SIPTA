@@ -17,13 +17,13 @@ export default function AdminNavbar() {
                         <a href={route("admin")}>Mahasiswa</a>
                     </li>
                     <li>
-                        <a>Dosen</a>
+                        <a href={route("dosen")}>Dosen</a>
                     </li>
                     <li>
                         <a>Tugas Akhir</a>
                     </li>
                     <li>
-                        <a>Akademik</a>
+                        {/* <a href={route("admin-akademik")}>Akademik</a> */}
                     </li>
                 </ul>
             </div>

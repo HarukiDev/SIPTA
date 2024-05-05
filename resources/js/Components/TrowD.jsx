@@ -8,7 +8,7 @@ export default function Trow({ nim, name, email, index, database }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        destroy(route(`${database}.destroy`, { user: index })); // Menyertakan 'nim' sebagai parameter 'user'
+        destroy(route(`${database}.destroy`, { dosen: index })); // Menyertakan 'nim' sebagai parameter 'dosen'
     };
 
     return (
@@ -18,8 +18,8 @@ export default function Trow({ nim, name, email, index, database }) {
             <td>{name}</td>
             <th>{email}</th>
             <th className="flex flex-row gap-2">
-                <a href={route(`${database}.show`, { user: index})} className="btn btn-success">Show</a>
-                <a href={route(`${database}.edit`, { user: index})} className="btn btn-warning">Edit</a>
+                <a href={route(`${database}.show`, { dosen: index})} className="btn btn-success">Show</a>
+                <a href={route(`${database}.edit`, { dosen: index})} className="btn btn-warning">Edit</a>
                 <form onSubmit={handleSubmit} >
                     <button className="btn btn-error" type="submit">Delete</button>
                 </form>

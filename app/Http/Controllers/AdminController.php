@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Inertia\Inertia;
-use App\Models\Admin;
 use App\Models\Dosen;
 use App\Models\Akademik;
 use App\Models\TugasAkhir;
@@ -27,10 +26,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return Inertia::render('AdminDashboard/Main', [
-            'akademiks' => Akademik::all(),
-            'tugasAkhirs' => TugasAkhir::all(),
-            'dosens' =>  Dosen::all(),
+        return Inertia::render('AdminDashboard/Mahasiswa/Main', [
             'mahasiswa' => User::all()->map(function ($mahasiswa) {
                 return [
                     'id' => $mahasiswa->id,
@@ -41,7 +37,7 @@ class AdminController extends Controller
             }),
         ]);
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -49,7 +45,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return Inertia::render('AdminDashboard/Create', [
+        return Inertia::render('AdminDashboard/Mahasiswa/Create', [
             "mahasiswa" => User::all()
         ]);
     }
@@ -60,7 +56,7 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) //  : RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         $validateData = $request->validate([
             'name' => 'required',
@@ -73,7 +69,7 @@ class AdminController extends Controller
 
         User::create($validateData);
 
-        return to_route('/admin');
+        return redirect()->route('admin');
     }
 
     /**
@@ -84,7 +80,7 @@ class AdminController extends Controller
      */
     public function show(User $user)
     {
-        return Inertia::render('AdminDashboard/Show', [
+        return Inertia::render('AdminDashboard/Mahasiswa/Show', [
             'user' => $user
         ]);
     }
@@ -97,9 +93,9 @@ class AdminController extends Controller
      */
     public function edit(User $user)
     {
-        return Inertia::render('AdminDashboard/Edit', [
+        return Inertia::render('AdminDashboard/Mahasiswa/Edit', [
             'user' => $user
-        ]);
+        ]) ;
     }
 
     /**
@@ -121,12 +117,14 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(User $user): RedirectResponse
     {   
         if($user->image) {
             Storage::delete([$user->image]);
         }
 
         $user->delete();
+        
+        return redirect()->route('admin');
     }
 }

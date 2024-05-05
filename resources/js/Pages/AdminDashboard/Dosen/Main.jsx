@@ -1,35 +1,36 @@
 import React from "react";
 import AdminLayout from "@/Layouts/AdminLayout";
 import { usePage } from "@inertiajs/react";
-import Trow from "@/Components/Trow";
+import Trow from "@/Components/TrowD";
 
 export default function AdminDashboard() {
-    const { mahasiswa } = usePage().props; // Akses 'mahasiswa' dari properti halaman
+    const { dosens } = usePage().props; // Akses 'mahasiswa' dari properti halaman
     console.log(usePage().props);
 
     return (
-        <AdminLayout>
+        <AdminLayout database="dosen">
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     {/* head */}
                     <thead>
                         <tr>
                             <th></th>
-                            <th>NIM</th>
+                            <th>Nomor</th>
                             <th>Nama</th>
-                            <th>Email</th>
+                            <th>Bidang</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {/* Iterasi melalui array mahasiswa.data */}
-                        {mahasiswa.map((item, index) => (
+                        {dosens.map((item, index) => (
                             <Trow
                                 key={index}
                                 index={item.id}
                                 name={item.name}
-                                nim={item.nim}
-                                email={item.email}
+                                nim={item.telp}
+                                email={item.bidang}
+                                database="dosen"
                             />
                         ))}
                     </tbody>

@@ -7,7 +7,7 @@ export default function Show() {
     console.log(usePage().props);
 
     return (
-        <AdminDashboard>
+        <AdminDashboard database="admin">
             <div className="py-1 w-[900px] h-[400px] flex drop-shadow-2xl">
                 <div className="mt-3 flex flex-row gap-3">
                     <div className="avatar">
