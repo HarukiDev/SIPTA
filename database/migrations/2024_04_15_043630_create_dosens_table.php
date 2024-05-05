@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('jurusan');
             $table->string('bidang');
             $table->string('telp');
-            $table->boolean('foto');
+            $table->boolean('foto')->nullable();
             $table->timestamps();
         });
     }

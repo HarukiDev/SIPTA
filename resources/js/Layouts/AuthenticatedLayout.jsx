@@ -2,7 +2,12 @@ import { useState, useEffect } from "react";
 import { themeChange } from "theme-change";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 
-export default function Authenticated({ auth, akademik, children, className1 }) {
+export default function Authenticated({
+    auth,
+    akademik,
+    children,
+    className1,
+}) {
     useEffect(() => {
         themeChange(false);
     }, []);
@@ -30,7 +35,7 @@ export default function Authenticated({ auth, akademik, children, className1 }) 
                     <a
                         href={route("dashboard")}
                         className={`btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-base-100 text-center ${
-                            btnActive ? 'active:bg-primary' : ''
+                            btnActive ? "active:bg-primary" : ""
                         }`}
                         onClick={handleClick}
                     >
@@ -39,7 +44,7 @@ export default function Authenticated({ auth, akademik, children, className1 }) 
                     <a
                         href={route("tugasakhir")}
                         className={`btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-base-100 text-center ${
-                            btnActive ? 'active:bg-primary' : ''
+                            btnActive ? "active:bg-primary" : ""
                         }`}
                         onClick={handleClick}
                     >
@@ -48,7 +53,7 @@ export default function Authenticated({ auth, akademik, children, className1 }) 
                     <a
                         href={route("dospem")}
                         className={`btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-base-100 text-center ${
-                            btnActive ? 'active:bg-primary' : ''
+                            btnActive ? "active:bg-primary" : ""
                         }`}
                         onClick={handleClick}
                     >
@@ -57,12 +62,23 @@ export default function Authenticated({ auth, akademik, children, className1 }) 
                     <a
                         href={route("profile.edit")}
                         className={`btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-white text-center ${
-                            btnActive ? 'active:bg-primary' : ''
+                            btnActive ? "active:bg-primary" : ""
                         }`}
                         onClick={handleClick}
                     >
                         Profil
                     </a>
+                    {auth.user.isAdmin === 1 ? (
+                        <a
+                            href={route("admin")}
+                            className={`btn bg-base-100 border-transparent hover:bg-primary focus:bg-primary focus:text-white text-center ${
+                                btnActive ? "active:bg-primary" : ""
+                            }`}
+                            onClick={handleClick}
+                        >
+                            Admin Dashboard
+                        </a>
+                    ) : null}
                 </div>
                 <div className="flex mt-48">
                     <p className="mr-1">Mode: </p>

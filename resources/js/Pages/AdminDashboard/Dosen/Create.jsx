@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, React } from "react";
 import AdminLayout from "@/Layouts/AdminLayout";
 import InputLabel from "@/Components/InputLabel";
 import InputError from "@/Components/InputError";
@@ -6,31 +6,41 @@ import TextInput from "@/Components/TextInput";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { useForm } from "@inertiajs/react";
 import axios from "axios";
+import Alert from "@/Components/Alert";
 
 export default function Create() {
+    const [message, setMessage] = useState("");
     const { data, setData, processing, errors } = useForm({
+        telp: "",
         name: "",
-        email: "",
-        nim: "",
-        password: "",
+        jurusan: "",
+        bidang: "",
     });
 
     const handleChange = (e) => {
-      const { name, value } = e.target;
-      setData((prevData) => ({
-          ...prevData,
-          [name]: value,
-      }));
-  };
+        const { name, value } = e.target;
+        setData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
 
     const submit = (e) => {
         e.preventDefault();
 
-        axios.post(route("admin.store"), data);
+        axios
+            .post(route("dosen.store"), data)
+            .then(() => setMessage("Berhasil ditambahkan"))
+            .then(() => {
+                window.location.reload();
+            });
     };
 
     return (
-        <AdminLayout>
+        <AdminLayout database="dosen">
+            {message && (
+                <Alert message={message} onClose={() => setMessage("")} />
+            )}
             <form onSubmit={submit}>
                 <div>
                     <InputLabel htmlFor="name" value="Name" />
@@ -50,54 +60,54 @@ export default function Create() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="email" value="Email" />
+                    <InputLabel htmlFor="jurusan" value="Jurusan" />
 
                     <TextInput
-                        id="email"
-                        type="email"
-                        name="email"
-                        value={data.email}
+                        id="jurusan"
+                        type="text"
+                        name="jurusan"
+                        value={data.jurusan}
                         className="mt-1 block w-full"
                         autoComplete="username"
                         onChange={handleChange}
                         required
                     />
 
-                    <InputError message={errors.email} className="mt-2" />
+                    <InputError message={errors.jurusan} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="nim" value="NIM" />
+                    <InputLabel htmlFor="telp" value="Nomor WA" />
 
                     <TextInput
-                        id="nim"
+                        id="telp"
                         type="text"
-                        name="nim"
-                        value={data.nim}
+                        name="telp"
+                        value={data.telp}
                         className="mt-1 block w-full"
-                        autoComplete="new-nim"
+                        autoComplete="new-telp"
                         onChange={handleChange}
                         required
                     />
 
-                    <InputError message={errors.nim} className="mt-2" />
+                    <InputError message={errors.telp} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
+                    <InputLabel htmlFor="bidang" value="Bidang" />
 
                     <TextInput
-                        id="password"
-                        type="password"
-                        name="password"
-                        value={data.password}
+                        id="bidang"
+                        type="bidang"
+                        name="bidang"
+                        value={data.bidang}
                         className="mt-1 block w-full"
-                        autoComplete="new-password"
+                        autoComplete="new-bidang"
                         onChange={handleChange}
                         required
                     />
 
-                    <InputError message={errors.password} className="mt-2" />
+                    <InputError message={errors.bidang} className="mt-2" />
                 </div>
 
                 <PrimaryButton

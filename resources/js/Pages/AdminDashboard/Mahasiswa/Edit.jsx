@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
@@ -7,28 +7,32 @@ import { Link, useForm, usePage } from "@inertiajs/react";
 import AdminDashboard from "@/Layouts/AdminLayout";
 
 export default function Edit({ mustVerifyEmail, status }) {
+    const [message, setMessage] = useState("");
     const { user } = usePage().props; // Akses 'mahasiswa' dari properti halaman
     console.log(usePage().props);
 
-    const { data, setData, patch, errors, processing } =
-        useForm({
-            name: user.name,
-            email: user.email,
-            nim: user.nim,
-            dospem: user.dospem,
-            alamat: user.alamat,
-            telp: user.telp,
-            tempatlahir: user.tempatlahir,
-            tanggallahir: user.tanggallahir,
-            jeniskelamin: user.jeniskelamin,
-            kewarganegaraan: user.kewarganegaraan,
-            agama: user.agama,
-        });
+    const { data, setData, patch, errors, processing } = useForm({
+        name: user.name,
+        email: user.email,
+        nim: user.nim,
+        dospem: user.dospem,
+        alamat: user.alamat,
+        telp: user.telp,
+        tempatlahir: user.tempatlahir,
+        tanggallahir: user.tanggallahir,
+        jeniskelamin: user.jeniskelamin,
+        kewarganegaraan: user.kewarganegaraan,
+        agama: user.agama,
+    });
 
     const submit = (e) => {
         e.preventDefault();
 
-        patch(route("admin.update", { user: user.id }), data);
+        patch(route("admin.update", { user: user.id }), data)
+            .then(() => setMessage("Berhasil di simpan"))
+            .then(() => {
+                window.location = "admin/mahasiswa";
+            });
     };
 
     const handleChange = (e) => {
@@ -37,7 +41,10 @@ export default function Edit({ mustVerifyEmail, status }) {
     };
 
     return (
-        <AdminDashboard>
+        <AdminDashboard database="admin">
+            {message && (
+                <Alert message={message} onClose={() => setMessage("")} />
+            )}
             <div className="flex flex-col ml-2 bg-base-100 drop-shadow-xl px-8 py-3 mt-0 rounded-lg">
                 <h1 className="text-secondary text-xl font-bold mb-3 ">
                     Data Pribadi Mahasiswa
@@ -227,16 +234,19 @@ export default function Edit({ mustVerifyEmail, status }) {
                     )}
 
                     <div className="flex items-center gap-4 mt-5">
-                        <PrimaryButton className="bg-secondary text-white" disabled={processing}>
+                        <PrimaryButton
+                            className="bg-secondary text-white"
+                            disabled={processing}
+                        >
                             Simpan
                         </PrimaryButton>
                     </div>
                     <a
-                            href={route("admin")}
-                            className="btn btn-primary w-20 h-8 self-end mr-4"
-                        >
-                            Back
-                        </a>
+                        href={route("admin")}
+                        className="btn btn-primary w-20 h-8 self-end mr-4"
+                    >
+                        Back
+                    </a>
                 </form>
             </div>
         </AdminDashboard>

@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('jeniskelamin')->nullable();
             $table->string('kewarganegaraan')->nullable();
             $table->string('agama')->nullable();
+            $table->boolean('isAdmin')->default(false);
         });
     }
 
