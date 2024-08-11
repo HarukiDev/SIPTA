@@ -1,66 +1,83 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SISTEM INFORMASI PENDAFTARAN TUGAS AKHIR
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Description
+SIPTA (Sistem Informasi Pendaftaran Tugas Akhir) is a web-based application designed to streamline the final project registration process for students. It allows students to submit their final project proposals, track the approval process, and receive feedback from their supervisors. Built using Laravel and Inertia.js with React.js, SIPTA aims to enhance the efficiency and transparency of the final project management process in academic institutions.
 
-## About Laravel
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Scripts](#scripts)
+- [Dependencies](#dependencies)
+- [License](#license)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Installation
+To install the PHP dependencies, run:
+```bash
+composer install
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+To install the Node.js dependencies, run:
+```bash
+npm install
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Usage
+To start the Laravel development server, run:
+```bash
+php artisan serve
+```
 
-## Learning Laravel
+To start the Vite development server, run:
+```bash
+npm run dev
+```
+To preview the build, run:
+```bash
+npm run serve
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Scripts
+- dev: Starts the Vite development server.
+- build: Builds the project for production using Vite.
+- serve: Previews the production build using Vite.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Dependencies
+### PHP/Laravel Dependencies
+- php: ^8.0.2
+- guzzlehttp/guzzle: ^7.2
+- inertiajs/inertia-laravel: ^0.6.3
+- itsgoingd/clockwork: ^5.2
+- laravel/framework: ^9.52
+- laravel/sanctum: ^3.2
+- laravel/tinker: ^2.7
+- tightenco/ziggy: ^1.0
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Node.js Dependencies
+- @inertiajs/react: ^1.0.15
+- axios: ^1.6.8
+- theme-change: ^2.5.0
+- Dev Dependencies
+- PHP/Laravel Dev Dependencies
+- fakerphp/faker: ^1.9.1
+- laravel/breeze: ^1.19
+- laravel/pint: ^1.0
+- laravel/sail: ^1.0.1
+- mockery/mockery: ^1.4.4
+- nunomaduro/collision: ^6.4
+- pestphp/pest: ^1.22
+- pestphp/pest-plugin-laravel: ^1.2
+- spatie/laravel-ignition: ^1.0
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Node.js Dev Dependencies
+- @headlessui/react: ^1.4.2
+- @inertiajs/react: ^1.0.0
+- @tailwindcss/forms: ^0.5.3
+- @vitejs/plugin-react: ^3.0.0
+- autoprefixer: ^10.4.12
+- daisyui: ^4.9.0
+- postcss: ^8.4.18
+- react: ^18.2.0
+- react-dom: ^18.2.0
 
 ## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License.
